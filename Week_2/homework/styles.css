@@ -1,7 +1,5 @@
-section{
-    float: left;
-    margin: 0 1.5%;
-    width: 63%;
+body{
+    padding: 25px 4% 25px 4%
 }
 
 hr{
@@ -36,4 +34,14 @@ footer {
 .year{
     display:flex;
     align-items: flex-end;
+}
+
+#skills{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.skillsli{
+    flex-basis: 33%;
+    flex-grow:2;
 }

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        background-color: powderblue;
+      }
+      input {
+        color: orange;
+      }
+      button:hover {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <input type="text" id="number" value="0" />
+    </form>
+    <button onclick="incrementValue()">Increase</button>
+    <script>
+      function incrementValue() {
+        var v = parseInt(document.getElementById("number").value);
+        v++;
+        v = Number.isNaN(v) ? 0 : v;
+        document.getElementById("number").value = v;
+        document.querySelector("button").color = blue;
+      }
+    </script>
+  </body>
+</html>

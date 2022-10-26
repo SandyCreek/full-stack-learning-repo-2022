@@ -16,14 +16,25 @@ export function useProvideAuth() {
   const [loggedIn, setLoggedIn] = useState(
     window.localStorage.getItem("loggedIn")
   );
+  const [authToken, setToken] = useState(
+    window.localStorage.getItem("authToken")
+  );
+  const [postId, setPostId] = useState(0);
 
   function login(values, form) {
     // Homework TODO: Add Backend Support
-    const validEmail = "tpeorocks@roblox.com";
-    const validPassword = "angularbad";
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 'email': values.email, 'password': values.password })
+    };
+    fetch('https://tpeo-todo.herokuapp.com/auth/login', requestOptions)
+      .then(response => response.json())
+      .then(data => console.log(data));
 
-    if (values.email === validEmail && values.password === validPassword) {
+    if (data) {
       setLoggedIn(true);
+      window.localStorage.setItem("loggedIn", true);
       window.localStorage.setItem("loggedIn", true);
       // Navigate towards / page, which is relatively one directory back
       navigate("../");

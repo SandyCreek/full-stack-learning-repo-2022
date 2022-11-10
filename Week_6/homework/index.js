@@ -12,6 +12,20 @@ app.listen(PORT, function () {
 });
 */
 
+app.use(express.json());
+app.use(express.urlencoded());
+
+app.get("/todo", function(req, res) {
+    const body = req.body;
+    console.log(req.body);
+    console.log(getByUsername(body["username"]));
+    res.status(200).json(getByUsername(body["username"]));
+});
+
+app.listen(PORT, function() {
+    console.log(`Running at ${PORT}`);
+});
+
 async function getByUsername(username){
     const docs = await db.collection("todo").where("username", "==", username).get();
     //console.log(docs.data());
